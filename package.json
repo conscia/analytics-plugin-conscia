@@ -1,6 +1,6 @@
 {
   "name": "analytics-plugin-conscia",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Analytics Plugin for Conscia DX Engine",
   "scripts": {
     "test": "jest",
