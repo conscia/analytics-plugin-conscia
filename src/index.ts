@@ -1,40 +1,51 @@
-const consciaAnalyticsPlugin = (config) => ({
+import fetch from 'isomorphic-fetch';
+
+interface ConsciaAnalyticsConfig {
+  trackerUrl: string;
+  apiKey: string;
+  customerCode: string;
+}
+
+const buildHeaders = (config: ConsciaAnalyticsConfig) => ({
+  'Content-Type': 'application/json',
+  'X-Customer-Code': config.customerCode,
+  'Authorization': `Bearer ${config.apiKey}`
+});
+
+const consciaAnalyticsPlugin = (config: ConsciaAnalyticsConfig) => ({
   name: 'conscia-analytics-plugin',
   config,
-  initialize: ({ config }) => {
-    config.endpoint = config.trackerUrl;
-    config.headers = { 'Content-Type': 'application/json', 'Authorization': `Bearer ${config.apiKey}` };
+  initialize: () => {
     console.log('Conscia Analytics Plugin');
   },
-  page: ({ payload, config }) => {
-    fetch(`${config.endpoint}/page`, {
+  page: ({ payload, config }: { payload: unknown, config: ConsciaAnalyticsConfig }) => {
+    fetch(`${config.trackerUrl}/page`, {
       method: 'POST',
-      headers: config.headers,
+      headers: buildHeaders(config),
       body: JSON.stringify({
-        customerCode: config.customerCode,
         message: payload,
       }),
     });
   },
-  track: ({ payload, config }) => {
-    fetch(`${config.endpoint}/track`, {
+  track: ({ payload, config }: { payload: unknown, config: ConsciaAnalyticsConfig }) => {
+    fetch(`${config.trackerUrl}/track`, {
       method: 'POST',
-      headers: config.headers,
+      headers: buildHeaders(config),
       body: JSON.stringify({
-        customerCode: config.customerCode,
         message: payload,
       }),
     });
   },
-  identify: ({ payload, config }) => {
-    fetch(`${config.endpoint}/identify`, {
+  identify: ({ payload, config }: { payload: unknown, config: ConsciaAnalyticsConfig }) => {
+    fetch(`${config.trackerUrl}/identify`, {
       method: 'POST',
-      headers: config.headers,
+      headers: buildHeaders(config),
       body: JSON.stringify({
-        customerCode: config.customerCode,
         message: payload,
       }),
     });
   },
   loaded: () => true,
 });
+
+export default consciaAnalyticsPlugin;

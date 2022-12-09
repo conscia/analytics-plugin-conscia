@@ -19,20 +19,30 @@
   },
   "homepage": "https://github.com/conscia/analytics-plugin-conscia#readme",
   "devDependencies": {
+    "@tsconfig/node16-strictest-esm": "^1.0.3",
+    "@types/isomorphic-fetch": "^0.0.36",
     "@typescript-eslint/eslint-plugin": "^5.45.1",
     "@typescript-eslint/parser": "^5.45.1",
+    "analytics": "^0.8.1",
     "eslint": "^8.29.0",
     "microbundle": "^0.15.1"
   },
   "type": "module",
-  "source": "src/index.js",
+  "source": "src/index.ts",
   "exports": {
-    "types": "./dist/analytics-plugin-conscia.d.ts",
+    "types": "./dist/index.d.ts",
     "require": "./dist/analytics-plugin-conscia.require.cjs",
     "default": "./dist/analytics-plugin-conscia.modern.js"
   },
   "main": "./dist/analytics-plugin-conscia.cjs",
   "module": "./dist/analytics-plugin-conscia.module.js",
   "umd:main": "./dist/analytics-plugin-conscia.umd.js",
-  "types": "./dist/analytics-plugin-conscia.d.ts"
+  "types": "./dist/index.d.ts",
+  "engines": {
+    "node": ">=16",
+    "br"
+  },
+  "dependencies": {
+    "isomorphic-fetch": "^3.0.0"
+  }
 }
