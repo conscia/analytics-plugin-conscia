@@ -1,0 +1,29 @@
+<html>
+  <head>
+    <script src="https://unpkg.com/analytics/dist/analytics.min.js"></script>
+    <script src="../../dist/analytics-plugin-conscia.umd.js"></script>
+  </head>
+  <body>
+    <h1>Conscia Analytics Plugin Demo</h1>
+    <button onclick="Analytics.track('Button Clicked')">Event 1</button>
+    <script>
+      const Analytics = _analytics.init({
+        app: 'awesome-app',
+        plugins: [
+          analyticsPluginConscia({
+            trackerUrl: 'https://tracker-staging.conscia.ai',
+            customerCode: 'xyz',
+            apiKey: '12345678',
+          })
+        ]
+      });
+    </script>
+    <script>
+      Analytics.identify('user123', {
+        name: 'John Smith',
+        company: 'Conscia',
+      });
+      Analytics.page();
+    </script>
+  </body>
+</html>
