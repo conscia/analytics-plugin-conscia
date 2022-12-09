@@ -4,16 +4,6 @@
 
 Plugin for the [analytics](https://www.npmjs.com/package/analytics) npm package. Built using [microbundle](https://github.com/developit/microbundle).
 
-This package distributes the plugin in the following formats:
-
-* `./dist/analytics-plugin-conscia.d.ts` - Typescript definitions
-* `./dist/analytics-plugin-conscia.require.cjs` - used for require() in Node 12+
-* `./dist/analytics-plugin-conscia.modern.js` - bundle for [modern](https://github.com/developit/microbundle#-modern-mode-) browsers
-* `./dist/analytics-plugin-conscia.cjs` - CommonJS bundle
-* `./dist/analytics-plugin-conscia.module.js` - ESM bundle
-* `./dist/analytics-plugin-conscia.umd.js` - [UMD](https://unpkg.com/analytics-plugin-conscia) bundle 
-
-
 # Installation
 
 Install `analytics` and `analytics-plugin-conscia` packages
@@ -110,3 +100,13 @@ The [UMD](https://unpkg.com/analytics-plugin-conscia) distribution (imported via
 | `customerCode` <br/>**required** - string| The Conscia Customer Code which the tracker events belong to |
 | `apiKey` <br/>**required** - string| The Conscia API Key which has sufficient permissions to submit tracker events |
 
+### Distributions
+
+This package distributes the plugin in the following formats:
+
+* `./dist/analytics-plugin-conscia.d.ts` - Typescript definitions
+* `./dist/analytics-plugin-conscia.require.cjs` - used for require() in Node 12+
+* `./dist/analytics-plugin-conscia.modern.js` - bundle for [modern](https://github.com/developit/microbundle#-modern-mode-) browsers
+* `./dist/analytics-plugin-conscia.cjs` - CommonJS bundle
+* `./dist/analytics-plugin-conscia.module.js` - ESM bundle
+* `./dist/analytics-plugin-conscia.umd.js` - [UMD](https://unpkg.com/analytics-plugin-conscia) bundle 
