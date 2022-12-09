@@ -39,8 +39,7 @@
   "umd:main": "./dist/analytics-plugin-conscia.umd.js",
   "types": "./dist/index.d.ts",
   "engines": {
-    "node": ">=16",
-    "br"
+    "node": ">=16"
   },
   "dependencies": {
     "isomorphic-fetch": "^3.0.0"
