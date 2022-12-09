@@ -1,0 +1,47 @@
+name: CI/CD Pipeline
+on: push
+
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 16
+          registry-url: 'https://registry.npmjs.org'
+      # - run: npm ci
+      # - run: npm run lint
+      # - run: npm run test -- --ci
+      # - run: npm run build
+      
+
+  publish:
+    name: Publish
+    needs: test
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 16
+          registry-url: 'https://registry.npmjs.org'
+      # - run: npm ci
+      # - run: npm run build
+      # - run: npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Notify
+        uses: 8398a7/action-slack@v3
+        with:
+          status: ${{ job.status }}
+          fields: ref,message,job,author
+          author_name: Analytics Plugin - Publish
+          job_name: Publish
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.CI_BUILD_SLACK_WEBHOOK_URL }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        if: always() # Pick up events even if the job fails or is canceled.
+
