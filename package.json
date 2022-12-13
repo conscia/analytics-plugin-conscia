@@ -5,8 +5,9 @@
   "scripts": {
     "test": "jest",
     "build:umd": "microbundle --external none --format umd",
-    "build:package": "microbundle --target node --format cjs,esm,modern",
-    "build": "npm run build:package && npm run build:umd",
+    "build:cjs": "microbundle --target node --format cjs",
+    "build:esm": "microbundle --format esm,modern",
+    "build": "npm run build:cjs && npm run build:esm && npm run build:umd",
     "dev": "microbundle watch",
     "lint": "eslint ."
   },
