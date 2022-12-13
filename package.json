@@ -1,6 +1,6 @@
 {
   "name": "analytics-plugin-conscia",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Analytics Plugin for Conscia DX Engine",
   "scripts": {
     "test": "jest",
@@ -53,7 +53,7 @@
   "jest": {
     "testPathIgnorePatterns": [
       "/node_modules/",
-      "/test\/browser/"
+      "/test/browser/"
     ]
   }
 }
