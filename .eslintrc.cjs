@@ -1,6 +1,6 @@
 // eslint-disable-next-line no-undef
 module.exports = {
-  ignorePatterns: ['dist/*.js'],
+  ignorePatterns: ['dist/*.js', 'test/browser'],
   overrides: [{
     // Typescript lint rules for src files
     files: 'src/**/*.ts',
