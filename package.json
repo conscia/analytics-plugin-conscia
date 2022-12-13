@@ -49,5 +49,11 @@
   },
   "dependencies": {
     "isomorphic-fetch": "^3.0.0"
+  },
+  "jest": {
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "/test\/browser/"
+    ]
   }
 }
